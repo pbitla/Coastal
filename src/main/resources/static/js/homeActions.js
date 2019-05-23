@@ -1,6 +1,7 @@
+var baseAppUrl = window.location.origin;
 ons.ready(function() {
 	$.ajax({
-		url : "http://localhost:8080/getAllCards"
+		url : baseAppUrl+"/getAllCards"
 	}).then(function(data) {
 		var infiniteList = document.getElementById('infinite-list');
 
@@ -36,7 +37,7 @@ function getCardRelatedReportingSettings() {
 	data["accountId"] = accountId;
 	$.ajax({
 			type: "POST",
-			url : "http://localhost:8080/CardInfo/",
+			url : baseAppUrl+"/CardInfo/",
 			data: JSON.stringify(data),
 			dataType: "text",
 			contentType: 'application/json',
@@ -60,7 +61,7 @@ function submitNewCardRequest (accountId, newCardReasonCode, comments) {
      data["comments"] = comments;
 	$.ajax({
 			type: "POST",
-			url : "http://localhost:8080/cardcontrols/reportcardissue",
+			url : baseAppUrl+"/cardcontrols/reportcardissue",
 			data: JSON.stringify(data),
 			dataType: "text",
 			contentType: 'application/json',
@@ -81,7 +82,7 @@ function lockOrUnlockToggleSubmit (accountId, freezeCardFlag) {
      data["freezeCardFlag"] = freezeCardFlag;
 	$.ajax({
 			type: "POST",
-			url : "http://localhost:8080/Card/OnOff",
+			url : baseAppUrl+"/Card/OnOff",
 			data: JSON.stringify(data),
 			dataType: "text",
 			contentType: 'application/json',
@@ -102,7 +103,7 @@ function getCardAccountSettings(accountId) {
      data["accountId"] = accountId;
 	$.ajax({
 			type: "POST",
-			url : "http://localhost:8080/CardInfo/",
+			url : baseAppUrl+"/CardInfo/",
 			data: JSON.stringify(data),
 			dataType: "text",
 			contentType: 'application/json',
