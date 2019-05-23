@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hello jQuery</title>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+
+<script type="text/javascript" src="js/home.js"></script>
+<script type="text/javascript" src="js/homeActions.js"></script>
+
+</head>
+
+<ons-page id="page">
+<ons-toolbar style="background:#61b55c;">
+	<div class="left">
+		<img src="../images/logo.jpg" style="height: 88%; width: auto;margin: 3%;     border-radius: 25%;">
+	</div>
+	<div class="center">Coastal Banking</div>
+	<div class="right">
+		<ons-toolbar-button>
+			<ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+		</ons-toolbar-button>
+	</div>
+</ons-toolbar> 
+
+<ons-modal> 
+	<ons-card id="card">
+	<div class="title" style="background-color: #80808042;">
+		<p style="color: #17bd79;text-align: center;height: 44px;padding-top: 3%;text-decoration: underline;"> Additional Account Services 		</p>
+	</div>
+    <div class="content">
+		<p id="modalTitle" style="color: #17bd79;color: #17bd79; font-size: large; font-weight: bold; text-decoration: underline;margin-bottom: 0px;margin-top: 0px;"> </p>
+	</div>
+			<ons-list> 
+				<ons-list-item>
+				 <label style="color: rgb(41, 121, 255);"> Block/UnBlock card : </label> 
+				 <div class="right" >
+					<ons-switch id="cardBlockerSwitch" style="min-height: 1%;">
+					</ons-switch>
+				 </div>
+				 </ons-list-item> 
+				<ons-list-item>
+				 <label style="color: rgb(41, 121, 255);"> Order New Card : </label> 
+				 <div class="right" >
+					<ons-switch id="NewCardToggler" style="min-height: 1%;">
+					</ons-switch>
+				 </div>
+				 </ons-list-item> 
+				 <section id="newCardOptions" style="display: none">
+					 <ons-list-item> 
+						 <label style="color: rgb(41, 121, 255);"> Select Reason(*) : </label> 
+							<div class="right" >
+								<ons-select id="newCardReasonCode">
+								    <option value="select">Select</option>
+								    <option value="lost">Lost</option>
+								    <option value="stolen">Stolen</option>
+								    <option value="damaged">Damaged</option>
+								  </ons-select>
+							</div>
+					</ons-list-item>
+								
+				    <ons-list-header>Comments(Optional) :</ons-list-header>
+					 <ons-list-item> 
+						 <!-- <label style="color: rgb(41, 121, 255);"> Comments(Optional) : </label> -->
+					
+						<div style="width: 100%;">
+							<div >
+								<textarea id="comment" class="textarea textarea--transparent" rows="3"
+									style="border: 1px solid #00a950; vertical-align: baseline; width: -webkit-fill-available;"
+									placeholder=" Enter Comments Here.. "></textarea>
+							</div>
+						</div>
+					</ons-list-item>
+				 </section>
+			</ons-list>
+			
+			<div class="alert-dialog-footer" >
+				<div id="newCardOptionsButtons" style="text-align: center; display: none;">
+					<ons-button id="submitModal" style="background: #00a950;"class="button--cta" onclick="submitModal()">Submit</ons-button>
+				</div>
+				<div style="text-align: center;margin-top: 3%; ">
+					<ons-button id="cancelModal" style="background: #00a950;" class="button--cta" onclick="closeModal()">Cancel</ons-button>
+				</div>
+			</div>
+		</ons-card> 
+		
+	<div id="spinnerCard" style="display:none;">
+		<p id="spinnerText"> </p>
+		<ons-icon id="spinner" size="30px" spin icon="md-spinner" ></ons-icon>
+	</div>
+</ons-modal>
+<ons-card >
+	<div class="content">
+		<img src="../images/face.jpg" style="width:9%; border-radius: 25%;">
+		<p id="userName" style="margin:0px" >  </p>
+	</div>
+</ons-card>
+<ons-card id="card1">
+	<div class="title"> Accounts </div>
+    <div class="content">
+		<ons-list> 
+		 <ons-lazy-repeat id="infinite-list"></ons-lazy-repeat> 
+		</ons-list>
+	</div>
+</ons-card>
+ 
+</ons-page>
+</html>
